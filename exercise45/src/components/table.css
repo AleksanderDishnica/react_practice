@@ -1,0 +1,28 @@
+table {
+    border: 2px inset #00f;
+    box-sizing: border-box;
+}
+
+thead {
+    padding: 0;
+}
+
+tbody {
+    padding: 0;
+}
+
+td {
+    padding: 15px 25px;
+    background-color: #FFFF00;
+}
+
+th {
+    background-color: #0000ff;
+    color: white;
+    padding: 15px 25px;
+}
+
+caption {
+    font-size: 25px;
+    margin: 15px 0;
+}
