@@ -1,0 +1,23 @@
+.left {
+    float: left;
+    background-image: url('./img/1.jpg');
+    object-fit: cover;
+    width: 50%;
+    height: 750px;
+    z-index: 10;
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 42%;
+    left: 25%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    color: white;
+    font-size: 84px;
+    font-family: 'Times New Roman', Times, serif;
+}

@@ -1,0 +1,88 @@
+* {
+    margin: 0;
+}
+
+main {
+    width: 500px;
+    margin: auto;
+    border: 3px inset lightgray;
+}
+
+.left {
+    float: left;
+    width: 30%;
+    background-color: rgb(68, 66, 66);
+    color: white;
+    height: 500px;
+}
+
+.left svg {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.left div {
+    padding: 0 20px;
+}
+
+.left ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid white;
+}
+
+.left ul li {
+    color: rgba(255, 255, 255, 0.479);
+    font-size: 12px;
+}
+
+.left ul li:first-child {
+    font-size: 24px;
+    color: white;
+}
+
+.right {
+    width: 70%;
+    float: right;
+}
+
+.right div {
+    padding: 25px;
+}
+
+.right div h1 {
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.right div h3 {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.right .ul {
+    position: relative;
+    padding: 0;
+    border-left: 1px solid black;
+}
+
+.right ul {
+    margin-top: 15px;
+    padding: 0 12px;
+}
+
+.right li:first-child {
+
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+}
+
+.right li:last-child {
+    list-style-type: none;
+}
+
+.clear {
+    clear: both;
+}
