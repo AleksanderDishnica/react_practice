@@ -4,23 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Cards1 from './components/Cards1';
-import Carousel1 from './components/Carousel1';
-import Grid1 from './components/Grid1';
-
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-const router = createBrowserRouter([
-  { path: '/', element: <App /> },
-  { path: '/Carousel', element: <Carousel1 /> },
-  { path: '/Grid', element: <Grid1 /> },
-  { path: '/Cards', element: <Cards1 /> },
-])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 
