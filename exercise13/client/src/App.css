@@ -1,0 +1,32 @@
+main a {
+  padding: 5px 15px;
+  margin: 20px 0;
+  text-decoration: none;
+  color: black;
+}
+
+main h3 {
+  font-size: 20px;
+  margin-top: 10px;
+  transition: transform .2s;
+}
+
+main .contain {
+  overflow: hidden;
+  height: 300px;
+}
+
+main .col-lg-4 {
+  /* border: 1px solid black; */
+  overflow: hidden;
+}
+
+main img {
+  transition: transform .2s;
+  height: 100%;
+  object-fit: cover;
+}
+
+main img:hover {
+  transform: scale(1.1);
+}
