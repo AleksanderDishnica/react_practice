@@ -16,6 +16,7 @@ export default function Navigation() {
                         <Link to="/">Home</Link>
                     </Nav>
                 </Navbar.Collapse>
+                <Link to="/contact">Contact</Link>
                 <Link to="/login">Login</Link>
                 <Link to="/register">Register</Link>
             </Container>

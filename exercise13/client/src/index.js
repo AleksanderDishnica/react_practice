@@ -6,20 +6,20 @@ import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import AddYacht from './components/AddYacht';
 import EditYacht from './components/EditYacht';
-import DeleteYacht from './components/DeleteYacht';
 import reportWebVitals from './reportWebVitals';
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Contact from './components/Contact';
 
 const router = createBrowserRouter([
   { path: '/', element: <App /> },
   { path: '/:id', element: <ShowId /> },
+  { path: '/contact', element: <Contact /> },
   { path: '/login', element: <Login /> },
   { path: '/register', element: <Register /> },
   { path: '/addYacht', element: <AddYacht /> },
   { path: '/yacht/edit/:id', element: <EditYacht /> },
-  { path: '/yacht/delete/:id', element: <DeleteYacht /> },
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

@@ -1,34 +1,45 @@
-const mongoose = require('mongoose');
-const Yacht = require('./models/yacht');
+const express = require('express');
+const router = express.Router();
+const Yacht = require('../models/yacht');
+const axios = require('axios');
 
-const uri = 'mongodb+srv://adishnica31:root@yachtdb.jlhuc.mongodb.net/?retryWrites=true&w=majority&appName=yachtDB';
-
-app.put('/yacht/:id', async (req, res) => {
+// Define the update route
+router.patch('/yacht/:id', async (req, res) => {
     try {
-        // 
-        const updatedYacht = await Yacht.findByIdAndUpdate(
-            req.params.id, // The yacht's ID
-            {
-                id: req.body.id,
-                title: req.body.title,
-                length: req.body.length,
-                place: req.body.place,
-                price: req.body.price,
-                new: req.body.new,
-                img: req.body.img
-            },
-            {
-                new: true,                 // Return the updated document
-                runValidators: true        // Run schema validation on the update
-            }
+        const yachtId = req.params.id;
+
+        // Log request body to debug
+        console.log('Request Body:', req.body);
+
+        // Only update the fields provided in the request body
+        const updateFields = {};
+        if (req.body.title) updateFields.title = req.body.title;
+        if (req.body.length) updateFields.length = req.body.length;
+        if (req.body.place) updateFields.place = req.body.place;
+        if (req.body.price) updateFields.price = req.body.price;
+        if (req.body.new !== undefined) updateFields.new = req.body.new;
+        if (req.body.img) updateFields.img = req.body.img;
+
+        // Perform the update
+        const updatedYacht = await Yacht.findOneAndUpdate(
+            { id: yachtId },
+            { $set: updateFields },  // Use $set to update fields
+            { new: true, runValidators: true }
         );
 
+        // Handle case where yacht was not found
         if (!updatedYacht) {
             return res.status(404).json({ message: 'Yacht not found' });
         }
 
-        res.json(updatedYacht);
+        // Return success response
+        res.status(200).json({ message: 'Yacht updated successfully', yacht: updatedYacht });
     } catch (err) {
+        console.error('Error during yacht update:', err.message);
         res.status(500).json({ error: err.message });
     }
 });
+
+
+// Export the router
+module.exports = router;

@@ -1,4 +1,3 @@
-// routes/yachtRoutes.js
 const express = require('express');
 const app = express.Router();
 const Yacht = require('../models/yacht');
@@ -12,7 +11,7 @@ app.post('/insertYacht', async (req, res) => {
 
     try {
         const newYacht = new Yacht({
-            id: id + 1,
+            id: id + 2,
             title: title,
             place: place,
             length: length,

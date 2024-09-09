@@ -28,7 +28,7 @@ router.get('/yachts', async (req, res) => {
     app.get('/yachts', async (req, res) => {
     });
 
-    // Read the JSON file
+    // Read the JSON file (this is for local files, when you do not have the DB)
     // const filePath = path.join(__dirname, '../data/yachts.json');
 
     // fs.readFile(filePath, 'utf8', (err, data) => {

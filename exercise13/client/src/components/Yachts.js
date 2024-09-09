@@ -6,7 +6,7 @@ import Col from 'react-bootstrap/Col';
 import Image from 'react-bootstrap/Image';
 import { Link } from 'react-router-dom'
 import Badge from 'react-bootstrap/Badge';
-import { Button } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 
 import edit from './svg/edit.svg'
 import deleting from './svg/deleting.svg'
@@ -15,6 +15,8 @@ export default function Yachts() {
     const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+
+    const [deleteId, setDeleteId] = useState();
 
     let admin = true
 
@@ -33,6 +35,19 @@ export default function Yachts() {
 
     if (loading) return <p>Loading...</p>;
     if (error) return <p>There was an error fetching yachts.</p>;
+
+    const handleDeleteSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.delete('http://127.0.0.1:3001/api/deleteYacht/' + deleteId);
+            alert('Yacht deleted successfully!');
+            window.location.reload();
+        } catch (error) {
+            console.error('There was an error deleting the yacht!', error);
+            alert('Failed to delete the yacht.');
+        }
+    }
 
     return (
         <div>
@@ -55,18 +70,20 @@ export default function Yachts() {
                                     <br />{data.new ? <><Badge pill bg="primary">Just arrived</Badge><br /></> : null}
                                 </section>
                             </Link>
-                            <p className="btn-group" role="group">
-                                {admin ? <Link to={"/yacht/edit/" + data.id} className='p-0 inline'>
-                                    <Button variant='info' className=''>
-                                        Edit
-                                    </Button>
-                                </Link> : ''}
-                                {admin ? <Link to={"/yacht/delete/" + data.id} className='p-0 inline'>
-                                    <Button variant='danger'>
-                                        Delete
-                                    </Button>
-                                </Link> : ''}
-                            </p>
+                            {admin ? (
+                                <div className="d-flex align-items-center m-0">
+                                    <Link to={"/yacht/edit/" + data.id} className="me-2 p-0">  {/* Use Bootstrap's `me-2` for margin */}
+                                        <Button variant="info">
+                                            Edit
+                                        </Button>
+                                    </Link>
+                                    <Form onSubmit={handleDeleteSubmit}>
+                                        <Button type="submit" onClick={() => setDeleteId(data.id)} variant="danger">
+                                            Delete
+                                        </Button>
+                                    </Form>
+                                </div>
+                            ) : ''}
                         </Col>
                     )
                 })}
